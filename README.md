@@ -1,4 +1,4 @@
-# Mathematics Teaching Portfolio
+# Tr. Lary Mathematics Teaching Portfolio
 
 A modern, responsive, and interactive portfolio website for mathematics educators.
 
