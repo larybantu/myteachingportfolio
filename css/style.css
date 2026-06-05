@@ -379,6 +379,7 @@ section {
     background: var(--white);
 }
 
+
 .timeline {
     position: relative;
     max-width: 800px;
@@ -479,7 +480,7 @@ section {
 }
 
 .resource-img {
-    height: 160px;
+    height: 260px;
     background: linear-gradient(135deg, var(--primary), var(--primary-light));
     display: flex;
     align-items: center;
