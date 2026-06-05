@@ -64,5 +64,5 @@ Simply edit the text in `index.html`. All sections are clearly marked with comme
 - Mobile browsers (iOS Safari, Chrome Mobile)
 
 ## Credits
-
+Dev Genius LaryB 
 Created with modern web standards and best practices for accessibility and performance.
