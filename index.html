@@ -3,134 +3,397 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Welcome to my Teaching Portfolio </title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <title>Mathematics Teaching Portfolio</title>
+    <meta name="description" content="Professional mathematics teaching portfolio showcasing curriculum, resources, and educational philosophy.">
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
-        }
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
 
-        /* Header & Navigation */
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+</head>
+<body>
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Math<span>Portfolio</span></a>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#philosophy">Philosophy</a></li>
+                <li><a href="#curriculum">Curriculum</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Inspiring Mathematical Minds</h1>
+            <p class="subtitle">Dedicated Mathematics Educator</p>
+            <p class="tagline">Transforming abstract concepts into engaging learning experiences. Building confidence, critical thinking, and a lifelong love for mathematics in every student.</p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn btn-primary">Explore My Work</a>
+                <a href="#contact" class="btn btn-outline">Get In Touch</a>
+            </div>
+        </div>
+    </section>
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-            font-weight: 500;
-        }
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>About Me</h2>
+                <p>Passionate about making mathematics accessible, engaging, and meaningful for all learners.</p>
+            </div>
 
-        nav a:hover {
-            opacity: 0.8;
-        }
+            <div class="about-grid">
+                <div class="about-image fade-in">
+                    <div class="img-placeholder">👨‍🏫</div>
+                </div>
+                <div class="about-content fade-in">
+                    <h3>Transforming How Students Experience Mathematics</h3>
+                    <p>With over a decade of experience in mathematics education, I believe that every student has the potential to excel in mathematics when given the right tools, support, and encouragement. My approach combines rigorous mathematical foundations with creative, real-world applications.</p>
+                    <p>I specialize in developing differentiated instruction strategies that cater to diverse learning styles, ensuring that visual, auditory, and kinesthetic learners all find pathways to success in my classroom.</p>
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 150px 2rem 100px;
-            text-align: center;
-            margin-top: 80px;
-        }
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-value="12">0</span>
+                            <span class="stat-label">Years Teaching</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-value="500">0</span>
+                            <span class="stat-label">Students Taught</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-value="15">0</span>
+                            <span class="stat-label">Awards Won</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
+    <!-- Teaching Philosophy -->
+    <section id="philosophy" class="philosophy">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Teaching Philosophy</h2>
+                <p>Core principles that guide my approach to mathematics education.</p>
+            </div>
 
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
+            <div class="philosophy-cards">
+                <div class="card fade-in">
+                    <div class="card-icon">🎯</div>
+                    <h3>Student-Centered Learning</h3>
+                    <p>Every lesson is designed with the student in mind. I create an inclusive environment where questions are encouraged, mistakes are seen as learning opportunities, and every voice matters.</p>
+                </div>
 
-        .hero-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 5px solid white;
-            margin: 0 auto 2rem;
-            object-fit: cover;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
+                <div class="card fade-in">
+                    <div class="card-icon">🔗</div>
+                    <h3>Real-World Connections</h3>
+                    <p>Mathematics is everywhere. I bridge the gap between abstract concepts and practical applications, showing students how math solves real problems in science, technology, finance, and daily life.</p>
+                </div>
 
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
+                <div class="card fade-in">
+                    <div class="card-icon">🧠</div>
+                    <h3>Conceptual Understanding</h3>
+                    <p>Beyond memorization and procedures, I focus on deep conceptual understanding. Students learn why mathematical principles work, not just how to apply them, building lasting knowledge.</p>
+                </div>
 
-        /* Section Styles */
-        section {
-            background: white;
-            margin-bottom: 3rem;
-            padding: 3rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
+                <div class="card fade-in">
+                    <div class="card-icon">📈</div>
+                    <h3>Growth Mindset</h3>
+                    <p>I cultivate a growth mindset culture where effort and persistence are celebrated. Students learn that mathematical ability is not fixed but can be developed through dedication and practice.</p>
+                </div>
 
-        section h2 {
-            color: #667eea;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 0.5rem;
-        }
+                <div class="card fade-in">
+                    <div class="card-icon">🤝</div>
+                    <h3>Collaborative Learning</h3>
+                    <p>Mathematics is a social activity. I incorporate group work, peer teaching, and mathematical discussions to build communication skills and deepen understanding through shared exploration.</p>
+                </div>
 
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
+                <div class="card fade-in">
+                    <div class="card-icon">💡</div>
+                    <h3>Technology Integration</h3>
+                    <p>Leveraging modern tools like Desmos, GeoGebra, and interactive simulations to visualize complex concepts and provide dynamic, hands-on learning experiences that engage digital natives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        .about-text p {
-            margin-bottom: 1rem;
-        }
+    <!-- Curriculum Section -->
+    <section id="curriculum" class="curriculum">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Curriculum & Experience</h2>
+                <p>My teaching journey and the subjects I've had the privilege to teach.</p>
+            </div>
 
-        .credentials {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 8px;
-        }
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="year">Present</span>
+                        <h3>AP Calculus & Statistics</h3>
+                        <p>Teaching advanced placement courses, preparing students for college-level mathematics and AP exams with a 95% pass rate.</p>
+                    </div>
+                </div>
 
-        .
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="year">2019 - Present</span>
+                        <h3>Algebra II & Pre-Calculus</h3>
+                        <p>Developed innovative curriculum combining traditional methods with project-based learning and technology integration.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="year">2016 - 2019</span>
+                        <h3>Geometry & Trigonometry</h3>
+                        <p>Created visual and spatial learning modules that improved student comprehension of geometric concepts by 40%.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="year">2014 - 2016</span>
+                        <h3>Algebra I & Foundations</h3>
+                        <p>Established strong mathematical foundations for students, focusing on number sense and algebraic thinking.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="year">2012 - 2014</span>
+                        <h3>Mathematics Teaching Assistant</h3>
+                        <p>Began teaching career supporting undergraduate mathematics courses while completing graduate studies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="resources">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Teaching Resources</h2>
+                <p>Curated materials and tools I use to create engaging mathematical experiences.</p>
+            </div>
+
+            <div class="resources-grid">
+                <div class="resource-card fade-in">
+                    <div class="resource-img">📊</div>
+                    <div class="resource-info">
+                        <h3>Interactive Graphing</h3>
+                        <p>Desmos and GeoGebra activities for visualizing functions, transformations, and geometric relationships.</p>
+                        <span class="resource-tag">Technology</span>
+                        <span class="resource-tag">Visualization</span>
+                    </div>
+                </div>
+
+                <div class="resource-card fade-in">
+                    <div class="resource-img">📐</div>
+                    <div class="resource-info">
+                        <h3>Problem-Solving Sets</h3>
+                        <p>Curated collections of challenging problems from AMC, AIME, and mathematical olympiads for advanced learners.</p>
+                        <span class="resource-tag">Advanced</span>
+                        <span class="resource-tag">Competition</span>
+                    </div>
+                </div>
+
+                <div class="resource-card fade-in">
+                    <div class="resource-img">🎮</div>
+                    <div class="resource-info">
+                        <h3>Math Games & Puzzles</h3>
+                        <p>Engaging mathematical games that reinforce concepts while building logical reasoning and strategic thinking.</p>
+                        <span class="resource-tag">Engagement</span>
+                        <span class="resource-tag">Logic</span>
+                    </div>
+                </div>
+
+                <div class="resource-card fade-in">
+                    <div class="resource-img">📹</div>
+                    <div class="resource-info">
+                        <h3>Video Tutorials</h3>
+                        <p>Custom video lessons explaining complex topics with step-by-step walkthroughs and visual demonstrations.</p>
+                        <span class="resource-tag">Video</span>
+                        <span class="resource-tag">Tutorial</span>
+                    </div>
+                </div>
+
+                <div class="resource-card fade-in">
+                    <div class="resource-img">📋</div>
+                    <div class="resource-info">
+                        <h3>Assessment Tools</h3>
+                        <p>Formative and summative assessment rubrics, self-check quizzes, and progress tracking templates.</p>
+                        <span class="resource-tag">Assessment</span>
+                        <span class="resource-tag">Tools</span>
+                    </div>
+                </div>
+
+                <div class="resource-card fade-in">
+                    <div class="resource-img">🌍</div>
+                    <div class="resource-info">
+                        <h3>Real-World Projects</h3>
+                        <p>Project-based learning units connecting mathematics to finance, architecture, data science, and engineering.</p>
+                        <span class="resource-tag">PBL</span>
+                        <span class="resource-tag">Applications</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Student & Colleague Testimonials</h2>
+                <p>What others say about my teaching and impact.</p>
+            </div>
+
+            <div class="testimonials-slider">
+                <div class="testimonial active">
+                    <p class="testimonial-text">"This class completely changed my perspective on math. I went from dreading the subject to actually looking forward to solving problems. The way complex concepts are broken down makes everything click."</p>
+                    <div class="testimonial-author">Sarah M.</div>
+                    <div class="testimonial-role">AP Calculus Student, Class of 2024</div>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-text">"An exceptional educator who truly understands how to reach every student. The differentiated instruction strategies implemented have significantly improved our department's overall performance metrics."</p>
+                    <div class="testimonial-author">Dr. James Wilson</div>
+                    <div class="testimonial-role">Department Chair, Mathematics</div>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-text">"I never thought I could understand calculus, but the visual explanations and patient guidance made it possible. I scored a 5 on my AP exam and I'm now majoring in engineering!"</p>
+                    <div class="testimonial-author">Michael T.</div>
+                    <div class="testimonial-role">Former Student, Currently at MIT</div>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-text">"The collaborative learning environment created in this classroom is remarkable. Students support each other and mathematical discussions happen naturally. A model for modern math education."</p>
+                    <div class="testimonial-author">Lisa Chen</div>
+                    <div class="testimonial-role">Peer Teacher, Mathematics Department</div>
+                </div>
+
+                <div class="slider-dots">
+                    <button class="dot active" aria-label="Testimonial 1"></button>
+                    <button class="dot" aria-label="Testimonial 2"></button>
+                    <button class="dot" aria-label="Testimonial 3"></button>
+                    <button class="dot" aria-label="Testimonial 4"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Get In Touch</h2>
+                <p>Interested in collaborating, have questions about my teaching methods, or want to discuss mathematics education? I'd love to hear from you.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info fade-in">
+                    <h3>Contact Information</h3>
+
+                    <div class="contact-item">
+                        <i>📧</i>
+                        <div>
+                            <strong>Email</strong>
+                            <p>teacher@mathportfolio.edu</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i>📍</i>
+                        <div>
+                            <strong>Location</strong>
+                            <p>Mathematics Department<br>School District, City, State</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i>🕐</i>
+                        <div>
+                            <strong>Office Hours</strong>
+                            <p>Monday - Friday: 3:00 PM - 4:30 PM<br>By appointment</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i>🌐</i>
+                        <div>
+                            <strong>Social</strong>
+                            <p>LinkedIn, Twitter, GitHub</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form fade-in" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="What's this about?">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Your message..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn">💼</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+                <a href="#" aria-label="GitHub">💻</a>
+                <a href="#" aria-label="Email">✉️</a>
+            </div>
+            <p>&copy; <span class="current-year">2024</span> Mathematics Teaching Portfolio. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.6;">Designed with passion for mathematics education.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Back to top">↑</button>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
