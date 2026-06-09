@@ -378,6 +378,10 @@ section {
 .curriculum {
     background: var(--white);
 }
+/* Experience Section */
+.experience {
+    background: var(--white);
+}
 
 
 .timeline {
