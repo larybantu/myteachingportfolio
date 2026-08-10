@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mr.Hillary Bantu Teaching Profile</title>
+    <title>Mr. Hillary Bantu — Teaching Profile</title>
     <meta name="description" content="Professional mathematics teaching portfolio showcasing curriculum, resources, and educational philosophy.">
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Literata (display), Inter (body), IBM Plex Mono (data / labels) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,600;7..72,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
@@ -21,26 +22,47 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo"> Mr Hillary Bantu <span> (Tr. Lary) </span></a>
+            <a href="#home" class="logo">Hillary Bantu <span>Tr. Lary</span></a>
             <ul class="nav-links">
-                <li><a href="#home" class="active"> Home </a></li>
+                <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#philosophy">Philosophy</a></li>
-				<li><a href="#experience">Experience</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#curriculum">Curriculum</a></li>
                 <li><a href="#resources">Resources</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+            <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="hero-grid-overlay" aria-hidden="true"></div>
+
+        <svg class="hero-plot" viewBox="0 0 800 320" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <line class="axis-line" x1="30" y1="270" x2="770" y2="270"></line>
+            <line class="axis-line" x1="60" y1="300" x2="60" y2="20"></line>
+            <g class="tick-marks">
+                <line x1="150" y1="265" x2="150" y2="275"></line>
+                <line x1="270" y1="265" x2="270" y2="275"></line>
+                <line x1="390" y1="265" x2="390" y2="275"></line>
+                <line x1="510" y1="265" x2="510" y2="275"></line>
+                <line x1="630" y1="265" x2="630" y2="275"></line>
+                <line x1="750" y1="265" x2="750" y2="275"></line>
+            </g>
+            <path class="plot-curve" pathLength="1000"
+                d="M 60 230 C 160 60, 260 380, 360 150 S 520 20, 610 160 S 740 300, 770 220"></path>
+            <circle class="plot-point" cx="360" cy="150" r="6"></circle>
+            <circle class="plot-point" cx="610" cy="160" r="6"></circle>
+            <text class="plot-label" x="365" y="130">f(x)</text>
+        </svg>
+
         <div class="hero-content">
-            <h1> Welcome to my Teaching Portfolio</h1>
-            <p class="subtitle">Dedicated Mathematics Educator, STEM and Computer Science Tutor, Innovative and Adaptive Skills Training</p>
+            <p class="eyebrow">Mathematics &amp; Computer Science Education</p>
+            <h1>Welcome to my Teaching Portfolio</h1>
+            <p class="subtitle">Dedicated Mathematics Educator, STEM &amp; Computer Science Tutor, Innovative and Adaptive Skills Training</p>
             <p class="tagline">Transforming abstract concepts into engaging learning experiences. Building confidence, critical thinking, and a lifelong love for mathematics in every student.</p>
             <div class="hero-buttons">
                 <a href="#about" class="btn btn-primary">Explore My Work</a>
@@ -53,17 +75,27 @@
     <section id="about" class="about">
         <div class="container">
             <div class="section-header fade-in">
+                <p class="eyebrow">01 — About</p>
                 <h2>About Me</h2>
                 <p>Passionate about making mathematics accessible, engaging, and meaningful for all learners.</p>
             </div>
 
             <div class="about-grid">
                 <div class="about-image fade-in">
-                    <div class="img-placeholder">👨‍🏫</div>
+                    <div class="img-placeholder">
+                        <svg viewBox="0 0 240 240" class="compass-icon" aria-hidden="true">
+                            <circle cx="120" cy="120" r="86" class="compass-circle"></circle>
+                            <circle cx="120" cy="120" r="3" class="compass-pivot"></circle>
+                            <line x1="120" y1="120" x2="120" y2="34" class="compass-leg compass-leg-a"></line>
+                            <line x1="120" y1="120" x2="187" y2="163" class="compass-leg compass-leg-b"></line>
+                            <circle cx="120" cy="34" r="4" class="compass-tip"></circle>
+                            <circle cx="187" cy="163" r="4" class="compass-tip"></circle>
+                        </svg>
+                    </div>
                 </div>
                 <div class="about-content fade-in">
                     <h3>Transforming How Students Experience Mathematics</h3>
-                    <p>With over 6 years of experience in mathematics education, I believe that every student has the potential to excel in mathematics when given the right tools, support, and encouragement. My approach combines rigorous mathematical foundations with creative, real-world applications.</p>
+                    <p>With over 12 years of experience in mathematics education, I believe that every student has the potential to excel in mathematics when given the right tools, support, and encouragement. My approach combines rigorous mathematical foundations with creative, real-world applications.</p>
                     <p>I specialize in developing differentiated instruction strategies that cater to diverse learning styles, ensuring that visual, auditory, and kinesthetic learners all find pathways to success in my classroom.</p>
 
                     <div class="stats">
@@ -89,6 +121,7 @@
     <section id="philosophy" class="philosophy">
         <div class="container">
             <div class="section-header fade-in">
+                <p class="eyebrow">02 — Philosophy</p>
                 <h2>Teaching Philosophy</h2>
                 <p>Core principles that guide my approach to mathematics education.</p>
             </div>
@@ -132,29 +165,32 @@
             </div>
         </div>
     </section>
-	
-<!-- Experience Section -->
+
+    <!-- Experience Section -->
     <section id="experience" class="curriculum">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Teaching and Work Experience</h2>
-                <p>Mathematics Teacher | International Education | Software Engineering Lecturer.</p>
-				<p>Experienced Mathematics Teacher with a background in international and private education, as well as tertiary-level Software Engineering instruction.</p>
+                <p class="eyebrow">03 — Experience</p>
+                <h2>Teaching &amp; Work Experience</h2>
+                <p>Mathematics Teacher | International Education | Software Engineering Lecturer</p>
+                <p>Experienced Mathematics Teacher with a background in international and private education, as well as tertiary-level Software Engineering instruction.</p>
+            </div>
+
             <div class="timeline">
-			<div class="timeline-item fade-in">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="year">Feb 2017 - </span>
-                        <h3>Mathematics and Homeroom Teacher| Triam Udom Suksa Nomklao</h3>
-                        <p>Delivered graduate-level instruction in Software Engineering, covering software development methodologies, system design, software architecture, testing, and project management. Facilitated discussions that bridged theoretical concepts with industry best practices and real-world applications.</p>
-                    </div>
-                </div>
-				
                 <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="year">Feb 2017 - Dec 2019</span>
-                        <h3>Software Engineering Lecturer | Master's Program </h3>
+                        <span class="year">Feb 2017 — Present</span>
+                        <h3>Mathematics &amp; Homeroom Teacher — Triam Udom Suksa Nomklao</h3>
+                        <p>Deliver mathematics instruction across the international programme, guiding a homeroom cohort while building differentiated lessons for a wide range of learners.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="year">Feb 2017 — Dec 2019</span>
+                        <h3>Software Engineering Lecturer — Master's Program</h3>
                         <p>Delivered graduate-level instruction in Software Engineering, covering software development methodologies, system design, software architecture, testing, and project management. Facilitated discussions that bridged theoretical concepts with industry best practices and real-world applications.</p>
                     </div>
                 </div>
@@ -162,8 +198,8 @@
                 <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="year">2014 - 2017</span>
-                        <h3>Mathematics Teacher | Montessori School Uganda</h3>
+                        <span class="year">2014 — 2017</span>
+                        <h3>Mathematics Teacher — Montessori School</h3>
                         <p>Delivered engaging mathematics lessons that fostered critical thinking, analytical reasoning, and problem-solving skills. Created supportive learning environments that encouraged student confidence and academic growth.</p>
                     </div>
                 </div>
@@ -171,28 +207,29 @@
                 <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="year">April 2010 – June 2014</span>
-                        <h3>IT Technical Lead | Uganda Export Promotion Board (UEPB) | Kampala, Uganda</h3>
+                        <span class="year">Apr 2010 — Jun 2014</span>
+                        <h3>IT Technical Lead — Uganda Export Promotion Board (UEPB), Kampala</h3>
                         <p>Led IT operations, including software deployment, network administration, technical support, and cybersecurity initiatives. Implemented security controls and maintained reliable technology infrastructure across the organization.</p>
                     </div>
                 </div>
-				<div class="timeline-item fade-in">
+
+                <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="year">March 2010 – December 2009</span>
-                        <h3>Founder & Partner | Naxic Solutions (Uganda) | 2006 – 2009| Kampala, Uganda</h3>
+                        <span class="year">2006 — 2009</span>
+                        <h3>Founder &amp; Partner — Naxic Solutions, Kampala</h3>
                         <p>Co-founded an ISP and network solutions company specializing in large-scale, multi-country network infrastructure projects. Led network design, deployment, and technical consulting for enterprise clients. Managed project delivery, client relationships, and business operations.</p>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
-	
+
     <!-- Curriculum Section -->
-    <section id="curriculum" class="curriculum">
+    <section id="curriculum" class="curriculum curriculum-alt">
         <div class="container">
             <div class="section-header fade-in">
+                <p class="eyebrow">04 — Curriculum</p>
                 <h2>Curriculum Teaching Experience</h2>
                 <p>My teaching journey and the subjects I've had the privilege to teach.</p>
             </div>
@@ -202,7 +239,7 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="year">Present</span>
-                        <h3>AP Calculus & Statistics</h3>
+                        <h3>AP Calculus &amp; Statistics</h3>
                         <p>Teaching advanced placement courses, preparing students for college-level mathematics and AP exams with a 95% pass rate.</p>
                     </div>
                 </div>
@@ -210,8 +247,8 @@
                 <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="year">2019 - Present</span>
-                        <h3>Algebra II & Pre-Calculus</h3>
+                        <span class="year">2019 — Present</span>
+                        <h3>Algebra II &amp; Pre-Calculus</h3>
                         <p>Developed innovative curriculum combining traditional methods with project-based learning and technology integration.</p>
                     </div>
                 </div>
@@ -219,8 +256,8 @@
                 <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="year">2016 - Present</span>
-                        <h3>Geometry & Trigonometry</h3>
+                        <span class="year">2016 — Present</span>
+                        <h3>Geometry &amp; Trigonometry</h3>
                         <p>Created visual and spatial learning modules that improved student comprehension of geometric concepts by 40%.</p>
                     </div>
                 </div>
@@ -228,8 +265,8 @@
                 <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="year">2014 - Present</span>
-                        <h3>Algebra I & Foundations</h3>
+                        <span class="year">2014 — Present</span>
+                        <h3>Algebra I &amp; Foundations</h3>
                         <p>Established strong mathematical foundations for students, focusing on number sense and algebraic thinking.</p>
                     </div>
                 </div>
@@ -237,7 +274,7 @@
                 <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="year">2012 - 2014</span>
+                        <span class="year">2012 — 2014</span>
                         <h3>Mathematics Teaching Assistant</h3>
                         <p>Began teaching career supporting undergraduate mathematics courses while completing graduate studies.</p>
                     </div>
@@ -250,6 +287,7 @@
     <section id="resources" class="resources">
         <div class="container">
             <div class="section-header fade-in">
+                <p class="eyebrow">05 — Resources</p>
                 <h2>Teaching Resources</h2>
                 <p>Curated materials and tools I use to create engaging mathematical experiences.</p>
             </div>
@@ -278,7 +316,7 @@
                 <div class="resource-card fade-in">
                     <div class="resource-img">🎮</div>
                     <div class="resource-info">
-                        <h3>Math Games & Puzzles</h3>
+                        <h3>Math Games &amp; Puzzles</h3>
                         <p>Engaging mathematical games that reinforce concepts while building logical reasoning and strategic thinking.</p>
                         <span class="resource-tag">Engagement</span>
                         <span class="resource-tag">Logic</span>
@@ -322,31 +360,32 @@
     <section id="testimonials" class="testimonials">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Student & Colleague Testimonials</h2>
+                <p class="eyebrow">06 — Testimonials</p>
+                <h2>Student &amp; Colleague Testimonials</h2>
                 <p>What others say about my teaching and impact.</p>
             </div>
 
             <div class="testimonials-slider">
                 <div class="testimonial active">
-                    <p class="testimonial-text">"This class completely changed my perspective on math. I went from dreading the subject to actually looking forward to solving problems. The way complex concepts are broken down makes everything click."</p>
+                    <p class="testimonial-text">This class completely changed my perspective on math. I went from dreading the subject to actually looking forward to solving problems. The way complex concepts are broken down makes everything click.</p>
                     <div class="testimonial-author">Sarah M.</div>
                     <div class="testimonial-role">AP Calculus Student, Class of 2024</div>
                 </div>
 
                 <div class="testimonial">
-                    <p class="testimonial-text">"An exceptional educator who truly understands how to reach every student. The differentiated instruction strategies implemented have significantly improved our department's overall performance metrics."</p>
+                    <p class="testimonial-text">An exceptional educator who truly understands how to reach every student. The differentiated instruction strategies implemented have significantly improved our department's overall performance metrics.</p>
                     <div class="testimonial-author">Dr. James Wilson</div>
                     <div class="testimonial-role">Department Chair, Mathematics</div>
                 </div>
 
                 <div class="testimonial">
-                    <p class="testimonial-text">"I never thought I could understand calculus, but the visual explanations and patient guidance made it possible. I scored a 5 on my AP exam and I'm now majoring in engineering!"</p>
+                    <p class="testimonial-text">I never thought I could understand calculus, but the visual explanations and patient guidance made it possible. I scored a 5 on my AP exam and I'm now majoring in engineering!</p>
                     <div class="testimonial-author">Michael T.</div>
                     <div class="testimonial-role">Former Student, Currently at MIT</div>
                 </div>
 
                 <div class="testimonial">
-                    <p class="testimonial-text">"The collaborative learning environment created in this classroom is remarkable. Students support each other and mathematical discussions happen naturally. A model for modern math education."</p>
+                    <p class="testimonial-text">The collaborative learning environment created in this classroom is remarkable. Students support each other and mathematical discussions happen naturally. A model for modern math education.</p>
                     <div class="testimonial-author">Lisa Chen</div>
                     <div class="testimonial-role">Peer Teacher, Mathematics Department</div>
                 </div>
@@ -365,6 +404,7 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header fade-in">
+                <p class="eyebrow">07 — Contact</p>
                 <h2>Get In Touch</h2>
                 <p>Interested in collaborating, have questions about my teaching methods, or want to discuss mathematics education? I'd love to hear from you.</p>
             </div>
@@ -393,7 +433,7 @@
                         <i>🕐</i>
                         <div>
                             <strong>Available Hours</strong>
-                            <p>Monday - Friday: 8:00 am - 4:30pm<br>By appointment</p>
+                            <p>Monday – Friday: 8:00 am – 4:30 pm<br>By appointment</p>
                         </div>
                     </div>
 
@@ -401,7 +441,7 @@
                         <i>🌐</i>
                         <div>
                             <strong>Social</strong>
-                            <p> <a href=https://github.com/larybantu>GitHub</a> </p>
+                            <p><a href="https://github.com/larybantu">GitHub</a></p>
                         </div>
                     </div>
                 </div>
@@ -437,13 +477,12 @@
     <footer>
         <div class="container">
             <div class="social-links">
+                <a href="https://github.com/larybantu" aria-label="GitHub">💻</a>
                 <a href="#" aria-label="LinkedIn">💼</a>
-                <a href="#" aria-label="Instagram">🐦</a>
-                <a href="#" aria-label="GitHub">💻</a>
-                <a href="#" aria-label="Email">✉️</a>
+                <a href="mailto:hbantu@gmail.com" aria-label="Email">✉️</a>
             </div>
-            <p>&copy; <span class="current-year">2024</span> Mathematics Teaching Portfolio. All rights reserved.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.6;">Designed with passion for mathematics education.</p>
+            <p>&copy; <span class="current-year">2024</span> Hillary Bantu — Mathematics Teaching Portfolio. All rights reserved.</p>
+            <p class="footer-note">Designed with passion for mathematics education.</p>
         </div>
     </footer>
 
