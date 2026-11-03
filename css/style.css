@@ -94,7 +94,35 @@ p { color: var(--ink-soft); }
   margin: 0 auto 3.5rem;
   text-align: center;
 }
+/* hero */
+.hero{padding:72px 0 0;background:linear-gradient(var(--line) 1px,transparent 1px) 0 0/48px 48px,linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/48px 48px;background-color:var(--paper)}
+.hero h1{font-size:clamp(2.3rem,6vw,4.4rem);font-weight:800;max-width:15ch}
+.hero .lede{font-size:1.2rem;max-width:56ch;color:var(--muted);margin:22px 0 28px}
+.badge{display:inline-block;background:var(--signal);color:#12223a;font-weight:700;font-size:.92rem;padding:5px 12px;border-radius:99px;margin-bottom:20px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.plot{display:block;width:100%;height:auto;margin-top:28px}
+.plot .ax{stroke:var(--muted);stroke-width:1.5}
+.plot .curve{fill:none;stroke:var(--blue);stroke-width:4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.4s .2s ease forwards}
+.plot circle{fill:var(--signal);stroke:var(--ink);stroke-width:2}
+@keyframes draw{to{stroke-dashoffset:0}}
 
+
+/* sections */
+section{padding:84px 0}
+section+section{border-top:1px solid var(--line)}
+h2{font-size:clamp(1.7rem,3.6vw,2.5rem);margin-bottom:28px;max-width:22ch}
+.split{display:grid;grid-template-columns:260px 1fr;gap:48px;align-items:start}
+.photo{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r);background:var(--line);display:block}
+.prose p{max-width:62ch;margin:0 0 1em}
+.rows{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:240px 1fr;gap:32px;padding:26px 0;border-bottom:1px solid var(--line)}
+.row h3{font-size:1.2rem}
+.row p{margin:0;max-width:62ch}
+.row .when{color:var(--muted);font-size:.95rem;margin-top:6px}
+.row .org{display:block;color:var(--muted);font-size:.97rem;margin-top:4px}
+.tools{display:grid;grid-template-columns:repeat(2,1fr);gap:0 48px}
+.tools .row{grid-template-columns:1fr;gap:6px}
+.note{color:var(--muted);margin-top:24px;max-width:62ch}
 .section-header h2 { margin-bottom: 0.85rem; }
 .section-header .eyebrow { display: block; }
 .section-header > p:not(.eyebrow) { font-size: 1.05rem; }
