@@ -348,7 +348,24 @@
                 </div>
             </div>
         </div>
+        <!-- Interactive Functions Graph -->
     </section>
+		<section id="lab">
+  			<div class="wrap">
+   			<h2>Try it: see a function change</h2>
+  			 <p class="note" style="margin:-8px 0 28px">The kind of live demo I use in class. Move the sliders and watch the wave respond.</p>
+   			<div class="lab">
+   			 <canvas id="plot" width="720" height="360" role="img" aria-label="Graph of a sine wave that changes as the sliders move"></canvas>
+    		<div class="controls">
+    			 <p class="eq" id="eq" aria-live="polite">y = 1.5 sin(1.0x)</p>
+     <label>Amplitude (a) <input id="a" type="range" min="0.5" max="3" step="0.1" value="1.5"></label>
+     <label>Frequency (b) <input id="b" type="range" min="0.5" max="4" step="0.1" value="1"></label>
+     <label>Phase shift (c) <input id="c" type="range" min="0" max="6.28" step="0.05" value="0"></label>
+     <button class="btn ghost" id="play" type="button" aria-pressed="false">Animate</button>
+    </div>
+   </div>
+  </div>
+</section>
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials">
