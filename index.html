@@ -377,19 +377,8 @@
                     </div>
                     <div class="control">
                         <label for="c">Phase shift (c) <output id="c-val" for="c">0.00</output></label>
-                        <input id="c" type="range" min="0" max="6.28" step="0.05" value="0">
+                        <input id="c" type="range" min="0" max="6.25" step="0.05" value="0">
                     </div>
-
-                    <div class="control">
-                        <label for="loop-min">Loop start (phase) <output id="loop-min-val" for="loop-min">0.00</output></label>
-                        <input id="loop-min" type="range" min="0" max="6.28" step="0.05" value="0">
-                    </div>
-                    <div class="control">
-                        <label for="loop-max">Loop end (phase) <output id="loop-max-val" for="loop-max">3.14</output></label>
-                        <input id="loop-max" type="range" min="0" max="6.28" step="0.05" value="3.14">
-                    </div>
-
-                    <button class="btn btn-ghost" id="play" type="button" aria-pressed="false">Animate</button>
                 </div>
             </div>
         </div>
@@ -546,7 +535,6 @@
         const sliders = { a: $('a'), b: $('b'), c: $('c') };
         const outputs = { a: $('a-val'), b: $('b-val'), c: $('c-val') };
         const eq = $('eq');
-        const playBtn = $('play');
 
         const css = getComputedStyle(document.documentElement);
         const token = (name, fallback) => css.getPropertyValue(name).trim() || fallback;
@@ -626,59 +614,46 @@
 
         Object.values(sliders).forEach((s) => s.addEventListener('input', draw));
 
-        // Animate the phase shift inside a chosen range [loopMin, loopMax],
-        // then jump back to loopMin and repeat.
+        // Auto-loop the phase shift from 0 up to 6.25, then wrap back to 0.
         const SPEED = 1.5;               // radians per second
-        const MIN_SPAN = 0.1;            // loop range can't collapse to nothing
-        const loopMin = $('loop-min'), loopMax = $('loop-max');
-        const loopMinOut = $('loop-min-val'), loopMaxOut = $('loop-max-val');
-        let rafId = null, last = 0, phase = 0;
-
-        function syncLoopRange(changed) {
-            let lo = +loopMin.value, hi = +loopMax.value;
-            if (hi - lo < MIN_SPAN) {                       // keep start < end
-                if (changed === loopMin) { hi = lo + MIN_SPAN; loopMax.value = hi; }
-                else                     { lo = hi - MIN_SPAN; loopMin.value = lo; }
-                lo = +loopMin.value; hi = +loopMax.value;
-            }
-            loopMinOut.textContent = lo.toFixed(2);
-            loopMaxOut.textContent = hi.toFixed(2);
-        }
-        loopMin.addEventListener('input', () => syncLoopRange(loopMin));
-        loopMax.addEventListener('input', () => syncLoopRange(loopMax));
-        syncLoopRange();
+        const LOOP_MIN = 0, LOOP_MAX = 6.25;
+        let rafId = null, last = 0, phase = +sliders.c.value;
 
         function tick(t) {
-            const lo = +loopMin.value, hi = +loopMax.value;
             const dt = last ? Math.min((t - last) / 1000, 0.1) : 0;
             last = t;
             phase += dt * SPEED;
-            if (phase < lo) phase = lo;
-            if (phase > hi) phase = lo + (phase - lo) % (hi - lo);   // loop back to the start
+            if (phase > LOOP_MAX) phase = LOOP_MIN + (phase - LOOP_MIN) % (LOOP_MAX - LOOP_MIN);
             sliders.c.value = phase;
             draw();
             rafId = requestAnimationFrame(tick);
         }
 
-        function setPlaying(on) {
-            playBtn.setAttribute('aria-pressed', String(on));
-            playBtn.textContent = on ? 'Pause' : 'Animate';
-            if (on) {
-                phase = +sliders.c.value;                 // continue from the slider position
-                last = 0;
-                rafId = requestAnimationFrame(tick);
-            } else {
-                cancelAnimationFrame(rafId);
-                rafId = null;
-            }
+        function start() {
+            if (rafId !== null) return;
+            last = 0;
+            rafId = requestAnimationFrame(tick);
+        }
+        function stop() {
+            cancelAnimationFrame(rafId);
+            rafId = null;
         }
 
-        playBtn.addEventListener('click', () => {
-            setPlaying(playBtn.getAttribute('aria-pressed') !== 'true');
-        });
-
-        // Dragging the phase slider while playing: pick up from the new position
+        // Dragging the phase slider: the loop picks up from the new position
         sliders.c.addEventListener('input', () => { phase = +sliders.c.value; });
+
+        // Run automatically, but only while the graph is on screen
+        // (and not at all for visitors who prefer reduced motion).
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!reduceMotion) {
+            if ('IntersectionObserver' in window) {
+                new IntersectionObserver((entries) => {
+                    entries[0].isIntersecting ? start() : stop();
+                }).observe(canvas);
+            } else {
+                start();
+            }
+        }
 
         draw();
     })();
