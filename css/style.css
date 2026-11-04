@@ -505,6 +505,11 @@ section { padding: 6rem 0; position: relative; }
 }
 .timeline-content h3 { margin: 0.4rem 0 0.5rem; font-size: 1.12rem; }
 .timeline-content p { font-size: 0.95rem; }
+.timeline-content .institution {
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
 
 /* ==========================================================================
    Resources
