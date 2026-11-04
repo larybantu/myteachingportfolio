@@ -380,6 +380,15 @@
                         <input id="c" type="range" min="0" max="6.28" step="0.05" value="0">
                     </div>
 
+                    <div class="control">
+                        <label for="loop-min">Loop start (phase) <output id="loop-min-val" for="loop-min">0.00</output></label>
+                        <input id="loop-min" type="range" min="0" max="6.28" step="0.05" value="0">
+                    </div>
+                    <div class="control">
+                        <label for="loop-max">Loop end (phase) <output id="loop-max-val" for="loop-max">3.14</output></label>
+                        <input id="loop-max" type="range" min="0" max="6.28" step="0.05" value="3.14">
+                    </div>
+
                     <button class="btn btn-ghost" id="play" type="button" aria-pressed="false">Animate</button>
                 </div>
             </div>
@@ -398,25 +407,25 @@
             <div class="testimonials-slider">
                 <div class="testimonial active">
                     <p class="testimonial-text">This class completely changed my perspective on math. I went from dreading the subject to actually looking forward to solving problems. The way complex concepts are broken down makes everything click.</p>
-                    <div class="testimonial-author">Sarah M.</div>
+                    <div class="testimonial-author"> Mali - Miss Nunlinee Leungjutamas </div>
                     <div class="testimonial-role">AP Calculus Student, Class of 2024</div>
                 </div>
 
                 <div class="testimonial">
                     <p class="testimonial-text">An exceptional educator who truly understands how to reach every student. The differentiated instruction strategies implemented have significantly improved our department's overall performance metrics.</p>
-                    <div class="testimonial-author">Dr. James Wilson</div>
+                    <div class="testimonial-author">Ajarn Neng</div>
                     <div class="testimonial-role">Department Chair, Mathematics</div>
                 </div>
 
                 <div class="testimonial">
                     <p class="testimonial-text">I never thought I could understand calculus, but the visual explanations and patient guidance made it possible. I scored a 5 on my AP exam and I'm now majoring in engineering!</p>
-                    <div class="testimonial-author">Michael T.</div>
-                    <div class="testimonial-role">Former Student, Currently at MIT</div>
+                    <div class="testimonial-author"> Sadhu -  </div>
+                    <div class="testimonial-role">Former Student, Currently at Chulalungorn university</div>
                 </div>
 
                 <div class="testimonial">
                     <p class="testimonial-text">The collaborative learning environment created in this classroom is remarkable. Students support each other and mathematical discussions happen naturally. A model for modern math education.</p>
-                    <div class="testimonial-author">Lisa Chen</div>
+                    <div class="testimonial-author">Tr. Jay</div>
                     <div class="testimonial-role">Peer Teacher, Mathematics Department</div>
                 </div>
 
@@ -455,7 +464,7 @@
                         <i>📍</i>
                         <div>
                             <strong>Location</strong>
-                            <p>International Program Mathematics Department<br>Triam Udom Suksa Nomklao School, Bangkok, Thailand</p>
+                            <p>International Program <br>Mathematics Department<br> Saphan Sung <br>Bangkok, Thailand</p>
                         </div>
                     </div>
 
@@ -617,16 +626,36 @@
 
         Object.values(sliders).forEach((s) => s.addEventListener('input', draw));
 
-        // Animate the phase shift: sweeps 0 -> 2π, then loops back to the start
-        const TWO_PI = 2 * Math.PI;
+        // Animate the phase shift inside a chosen range [loopMin, loopMax],
+        // then jump back to loopMin and repeat.
         const SPEED = 1.5;               // radians per second
+        const MIN_SPAN = 0.1;            // loop range can't collapse to nothing
+        const loopMin = $('loop-min'), loopMax = $('loop-max');
+        const loopMinOut = $('loop-min-val'), loopMaxOut = $('loop-max-val');
         let rafId = null, last = 0, phase = 0;
 
+        function syncLoopRange(changed) {
+            let lo = +loopMin.value, hi = +loopMax.value;
+            if (hi - lo < MIN_SPAN) {                       // keep start < end
+                if (changed === loopMin) { hi = lo + MIN_SPAN; loopMax.value = hi; }
+                else                     { lo = hi - MIN_SPAN; loopMin.value = lo; }
+                lo = +loopMin.value; hi = +loopMax.value;
+            }
+            loopMinOut.textContent = lo.toFixed(2);
+            loopMaxOut.textContent = hi.toFixed(2);
+        }
+        loopMin.addEventListener('input', () => syncLoopRange(loopMin));
+        loopMax.addEventListener('input', () => syncLoopRange(loopMax));
+        syncLoopRange();
+
         function tick(t) {
+            const lo = +loopMin.value, hi = +loopMax.value;
             const dt = last ? Math.min((t - last) / 1000, 0.1) : 0;
             last = t;
-            phase = (phase + dt * SPEED) % TWO_PI;       // wraps seamlessly at the end
-            sliders.c.value = Math.min(phase, +sliders.c.max);
+            phase += dt * SPEED;
+            if (phase < lo) phase = lo;
+            if (phase > hi) phase = lo + (phase - lo) % (hi - lo);   // loop back to the start
+            sliders.c.value = phase;
             draw();
             rafId = requestAnimationFrame(tick);
         }
