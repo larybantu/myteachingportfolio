@@ -30,6 +30,7 @@
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#curriculum">Curriculum</a></li>
                 <li><a href="#resources">Resources</a></li>
+				<li><a href="#tryit">Try It</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -348,24 +349,42 @@
                 </div>
             </div>
         </div>
-        <!-- Interactive Functions Graph -->
     </section>
-		<section id="lab">
-  			<div class="wrap">
-   			<h2>Try it: see a function change</h2>
-  			 <p class="note" style="margin:-8px 0 28px">The kind of live demo I use in class. Move the sliders and watch the wave respond.</p>
-   			<div class="lab">
-   			 <canvas id="plot" width="720" height="360" role="img" aria-label="Graph of a sine wave that changes as the sliders move"></canvas>
-    		<div class="controls">
-    			 <p class="eq" id="eq" aria-live="polite">y = 1.5 sin(1.0x)</p>
-     <label>Amplitude (a) <input id="a" type="range" min="0.5" max="3" step="0.1" value="1.5"></label>
-     <label>Frequency (b) <input id="b" type="range" min="0.5" max="4" step="0.1" value="1"></label>
-     <label>Phase shift (c) <input id="c" type="range" min="0" max="6.28" step="0.05" value="0"></label>
-     <button class="btn ghost" id="play" type="button" aria-pressed="false">Animate</button>
-    </div>
-   </div>
-  </div>
-</section>
+
+    <!-- Interactive Functions Graph -->
+    <section id="tryit" class="tryit">
+        <div class="container">
+            <div class="section-header fade-in">
+                <p class="eyebrow">Interactive</p>
+                <h2>Try it: see a function change in real time</h2>
+                <p>The kind of live demo I use in class. Move the sliders and watch the wave respond.</p>
+            </div>
+
+            <div class="lab fade-in">
+                <canvas id="plot" width="720" height="360" role="img"
+                    aria-label="Graph of a sine wave that changes as the sliders move"></canvas>
+
+                <div class="controls">
+                    <p class="eq" id="eq" aria-live="polite">y = 1.5 sin(1.0x)</p>
+
+                    <div class="control">
+                        <label for="a">Amplitude (a) <output id="a-val" for="a">1.5</output></label>
+                        <input id="a" type="range" min="0.5" max="3" step="0.1" value="1.5">
+                    </div>
+                    <div class="control">
+                        <label for="b">Frequency (b) <output id="b-val" for="b">1.0</output></label>
+                        <input id="b" type="range" min="0.5" max="4" step="0.1" value="1">
+                    </div>
+                    <div class="control">
+                        <label for="c">Phase shift (c) <output id="c-val" for="c">0.00</output></label>
+                        <input id="c" type="range" min="0" max="6.28" step="0.05" value="0">
+                    </div>
+
+                    <button class="btn btn-ghost" id="play" type="button" aria-pressed="false">Animate</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials">
@@ -501,6 +520,125 @@
     <button class="back-to-top" aria-label="Back to top">↑</button>
 
     <!-- JavaScript -->
+    <!-- Interactive graph -->
+    <script>
+    (function () {
+        const canvas = document.getElementById('plot');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        const W = 720, H = 360;
+        const dpr = Math.min(window.devicePixelRatio || 1, 3);
+        canvas.width = W * dpr;
+        canvas.height = H * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        const $ = (id) => document.getElementById(id);
+        const sliders = { a: $('a'), b: $('b'), c: $('c') };
+        const outputs = { a: $('a-val'), b: $('b-val'), c: $('c-val') };
+        const eq = $('eq');
+        const playBtn = $('play');
+
+        const css = getComputedStyle(document.documentElement);
+        const token = (name, fallback) => css.getPropertyValue(name).trim() || fallback;
+        const colors = {
+            bg:    token('--card-bg', '#ffffff'),
+            grid:  token('--border', '#e2ded2'),
+            axis:  token('--ink-soft', '#5a6970'),
+            curve: token('--brick', '#b5482f'),
+            font:  token('--font-mono', 'monospace')
+        };
+
+        const X_MIN = -2 * Math.PI, X_MAX = 2 * Math.PI;
+        const Y_MAX = 3.5;
+        const pad = 28;
+        const sx = (x) => pad + ((x - X_MIN) / (X_MAX - X_MIN)) * (W - 2 * pad);
+        const sy = (y) => H / 2 - (y / Y_MAX) * (H / 2 - pad);
+
+        function draw() {
+            const a = +sliders.a.value, b = +sliders.b.value, c = +sliders.c.value;
+
+            ctx.clearRect(0, 0, W, H);
+            ctx.fillStyle = colors.bg;
+            ctx.fillRect(0, 0, W, H);
+
+            // grid
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = colors.grid;
+            ctx.beginPath();
+            for (let k = -2; k <= 2; k += 0.5) {
+                const x = sx(k * Math.PI);
+                ctx.moveTo(x, pad / 2); ctx.lineTo(x, H - pad / 2);
+            }
+            for (let y = -3; y <= 3; y++) {
+                ctx.moveTo(pad / 2, sy(y)); ctx.lineTo(W - pad / 2, sy(y));
+            }
+            ctx.stroke();
+
+            // axes
+            ctx.strokeStyle = colors.axis;
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(pad / 2, sy(0)); ctx.lineTo(W - pad / 2, sy(0));
+            ctx.moveTo(sx(0), pad / 2); ctx.lineTo(sx(0), H - pad / 2);
+            ctx.stroke();
+
+            // labels
+            ctx.fillStyle = colors.axis;
+            ctx.font = '11px ' + colors.font;
+            ctx.textAlign = 'center';
+            const marks = { '-2π': -2, '-π': -1, 'π': 1, '2π': 2 };
+            for (const [label, k] of Object.entries(marks)) {
+                ctx.fillText(label, sx(k * Math.PI), sy(0) + 16);
+            }
+            ctx.textAlign = 'right';
+            [-3, -2, -1, 1, 2, 3].forEach((y) => ctx.fillText(String(y), sx(0) - 6, sy(y) + 4));
+
+            // curve
+            ctx.strokeStyle = colors.curve;
+            ctx.lineWidth = 3;
+            ctx.lineJoin = 'round';
+            ctx.beginPath();
+            const steps = 400;
+            for (let i = 0; i <= steps; i++) {
+                const x = X_MIN + (i / steps) * (X_MAX - X_MIN);
+                const y = a * Math.sin(b * x + c);
+                i === 0 ? ctx.moveTo(sx(x), sy(y)) : ctx.lineTo(sx(x), sy(y));
+            }
+            ctx.stroke();
+
+            // readouts
+            outputs.a.textContent = a.toFixed(1);
+            outputs.b.textContent = b.toFixed(1);
+            outputs.c.textContent = c.toFixed(2);
+            const phase = c === 0 ? '' : ' + ' + c.toFixed(2);
+            eq.textContent = 'y = ' + a.toFixed(1) + ' sin(' + b.toFixed(1) + 'x' + phase + ')';
+        }
+
+        Object.values(sliders).forEach((s) => s.addEventListener('input', draw));
+
+        // Animate the phase shift
+        let rafId = null, last = 0;
+        function tick(t) {
+            const dt = last ? (t - last) / 1000 : 0;
+            last = t;
+            let c = +sliders.c.value + dt * 1.5;
+            if (c > 6.28) c -= 6.28;
+            sliders.c.value = c;
+            draw();
+            rafId = requestAnimationFrame(tick);
+        }
+        playBtn.addEventListener('click', () => {
+            const playing = playBtn.getAttribute('aria-pressed') === 'true';
+            playBtn.setAttribute('aria-pressed', String(!playing));
+            playBtn.textContent = playing ? 'Animate' : 'Pause';
+            if (playing) { cancelAnimationFrame(rafId); rafId = null; }
+            else { last = 0; rafId = requestAnimationFrame(tick); }
+        });
+
+        draw();
+    })();
+    </script>
     <script src="js/main.js"></script>
 </body>
 </html>
