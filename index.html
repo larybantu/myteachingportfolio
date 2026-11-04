@@ -617,24 +617,39 @@
 
         Object.values(sliders).forEach((s) => s.addEventListener('input', draw));
 
-        // Animate the phase shift
-        let rafId = null, last = 0;
+        // Animate the phase shift: sweeps 0 -> 2π, then loops back to the start
+        const TWO_PI = 2 * Math.PI;
+        const SPEED = 1.5;               // radians per second
+        let rafId = null, last = 0, phase = 0;
+
         function tick(t) {
-            const dt = last ? (t - last) / 1000 : 0;
+            const dt = last ? Math.min((t - last) / 1000, 0.1) : 0;
             last = t;
-            let c = +sliders.c.value + dt * 1.5;
-            if (c > 6.28) c -= 6.28;
-            sliders.c.value = c;
+            phase = (phase + dt * SPEED) % TWO_PI;       // wraps seamlessly at the end
+            sliders.c.value = Math.min(phase, +sliders.c.max);
             draw();
             rafId = requestAnimationFrame(tick);
         }
+
+        function setPlaying(on) {
+            playBtn.setAttribute('aria-pressed', String(on));
+            playBtn.textContent = on ? 'Pause' : 'Animate';
+            if (on) {
+                phase = +sliders.c.value;                 // continue from the slider position
+                last = 0;
+                rafId = requestAnimationFrame(tick);
+            } else {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+        }
+
         playBtn.addEventListener('click', () => {
-            const playing = playBtn.getAttribute('aria-pressed') === 'true';
-            playBtn.setAttribute('aria-pressed', String(!playing));
-            playBtn.textContent = playing ? 'Animate' : 'Pause';
-            if (playing) { cancelAnimationFrame(rafId); rafId = null; }
-            else { last = 0; rafId = requestAnimationFrame(tick); }
+            setPlaying(playBtn.getAttribute('aria-pressed') !== 'true');
         });
+
+        // Dragging the phase slider while playing: pick up from the new position
+        sliders.c.addEventListener('input', () => { phase = +sliders.c.value; });
 
         draw();
     })();
